@@ -17,7 +17,7 @@ class Message(models.Model):
         return f"Messages: Id = {self.id}, Message = {self.message}, User = {self.user_id}, Comments = {comments}"
 
 class Comment(models.Model):
-    comment = models.TextField
+    comment = models.TextField()
     user = models.ForeignKey(User, related_name= "user_comments", on_delete = models.CASCADE)
     message = models.ForeignKey(Message, related_name = "message_comments", on_delete = models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
