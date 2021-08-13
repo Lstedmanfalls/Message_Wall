@@ -23,7 +23,6 @@ def create_message(request): #POST REQUEST
         return redirect("/wall")
     elif request.method == "POST":
         Message.objects.create(message = request.POST["message"], user = User.objects.get(id=request.session["user_id"]))
-        messages.success(request, "Message successfully created")
     return redirect("/wall")
 
 def create_comment(request): #POST REQUEST
@@ -31,5 +30,4 @@ def create_comment(request): #POST REQUEST
         return redirect("/wall")
     elif request.method == "POST":
         Comment.objects.create(comment = request.POST["comment"], user = User.objects.get(id=request.session["user_id"]), message = Message.objects.get(id=request.POST["message_id"]))
-        messages.success(request, "Message successfully created")
     return redirect("/wall")
